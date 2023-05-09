@@ -2,8 +2,12 @@ CREATE TABLE students (
     id serial PRIMARY KEY,
     first_name varchar(160) NOT NULL CHECK (first_name != ''),
     last_name varchar(160) NOT NULL CHECK (last_name != ''),
-    group_id int REFERENCES groups(id)
+    group_id int REFERENCES groups(id),
+    entry date NOT NULL DEFAULT current_date
 );
+
+-- ALTER TABLE students
+-- ADD COLUMN entry date NOT NULL DEFAULT current_date;
 
 
 CREATE TABLE groups(
@@ -59,3 +63,7 @@ INSERT INTO exams (student_id, discipline_id, grade) VALUES
 (2, 1, 50),
 (3, 3, 20),
 (4, 3, 100);
+
+------
+
+UPDATE exams SET grade = 67 WHERE student_id = 2;
