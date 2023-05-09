@@ -26,5 +26,36 @@ CREATE TABLE exams(
     student_id int REFERENCES students(id),
     discipline_id int REFERENCES disciplines(id),
     grade int,
-    isPassed boolean
+    isPassed boolean GENERATED ALWAYS AS (grade >= 60) STORED
 );
+
+
+INSERT INTO faculty (name) VALUES 
+('mechanical'),
+('filology'),
+('biology'),
+('alchemistry'),
+('Griffindor');
+
+
+INSERT INTO groups (faculty_id) VALUES
+(1), (2), (2), (5), (5);
+
+
+INSERT INTO students (first_name, last_name, group_id) VALUES
+('Harry', 'Potter', 4),
+('Ron', 'Weasley', 4),
+('Draco', 'Malfoy', 1),
+('Dobby', 'Elf', 2);
+
+
+INSERT INTO disciplines(name, professor) VALUES 
+('flying', 'Md. Truck'),
+('potions', 'Severus Snape'),
+('math', 'Kluchnick');
+
+INSERT INTO exams (student_id, discipline_id, grade) VALUES
+(1, 1, 90),
+(2, 1, 50),
+(3, 3, 20),
+(4, 3, 100);
