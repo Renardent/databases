@@ -2,10 +2,18 @@
   "name": "databases",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node ./index.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Renardent/databases.git"
+  },
+  "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "pg": "^8.10.0"
+  }
 }
