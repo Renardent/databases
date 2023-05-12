@@ -67,3 +67,34 @@ INSERT INTO exams (student_id, discipline_id, grade) VALUES
 ------
 
 UPDATE exams SET grade = 67 WHERE student_id = 2;
+
+CREATE TABLE products (
+    id serial PRIMARY KEY,
+    brand varchar(200) NOT NULL,
+    model varchar(300) NOT NULL,
+    description text,
+    category varchar(200) NOT NULL,
+    price numeric(10,2) NOT NULL CHECK (price > 0),
+    discounted_price numeric(10,2) CHECK (discounted_price <= price)
+);
+
+
+INSERT INTO products (brand, model, category, price) VALUES 
+('Samsung', 'S10', 'smartphones', 200),
+('iPhone', '5', 'smartphones', 500),
+('Realme', '6', 'smartphones', 100),
+('LG', '5', 'tv', 300),
+('Sony', '45', 'tv', 1000);
+
+ALTER TABLE products
+ADD COLUMN quantity int CHECK (quantity > 0);
+
+ALTER TABLE products
+ADD CONSTRAINT "unique_brand_model_pair" UNIQUE(brand, model);
+
+
+ALTER TABLE products 
+DROP CONSTRAINT "products_quantity_check";
+
+ALTER TABLE products
+ADD CONSTRAINT "products_quantity_check" CHECK (quantity >= 0);
